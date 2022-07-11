@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
     // Initializing random seed
     srand(time(NULL));
 
-    for (int i = 0; i < 100000; ++i) {
+    for (int32_t i = 0; i < 100000; ++i) {
         // Chooses a box at random
         random = rand() % 3;
 
