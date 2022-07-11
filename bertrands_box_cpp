@@ -1,0 +1,42 @@
+#include <iostream>
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+    char _boxes[3][2] = {{'y', 'y'}, {'y', 'w'}, {'w', 'w'}};
+
+    char selected_box[2];
+    int32_t random, other_index;
+    float yy = 0, yw = 0;
+
+    // Initializing random seed
+    srand(time(NULL));
+
+    for (int i = 0; i < 100000; ++i) {
+        // Chooses a box at random
+        random = rand() % 3;
+
+        copy(begin(_boxes[random]), end(_boxes[random]), begin(selected_box));
+
+        // Select a ball at random
+        random = rand() % 2;
+
+        // If the selected ball is yellow then do wizardry
+        if (selected_box[random] == 'y')
+        {
+            other_index = (random == 0) ? 1 : 0;
+
+            // Checks if the 2nd ball (other_index) is yellow
+            if (selected_box[other_index] == 'y') {
+                ++yy;
+            } else {
+                ++yw;
+            }
+        }
+    }
+
+    printf("%f", yy / (yy + yw));
+
+    return 0;
+}
