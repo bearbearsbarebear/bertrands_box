@@ -1,7 +1,4 @@
 #include <iostream>
-#include <time.h>
-#include <algorithm>
-#include <iterator>
 
 using namespace std;
 
