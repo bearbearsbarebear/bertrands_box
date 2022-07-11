@@ -37,8 +37,7 @@ int main(int argc, char* argv[])
         random = rand() % 2;
 
         // If the selected ball is yellow then do wizardry
-        if (selected_box[random] == 'y')
-        {
+        if (selected_box[random] == 'y') {
             other_index = (random == 0) ? 1 : 0;
 
             // Checks if the 2nd ball (other_index) is yellow
