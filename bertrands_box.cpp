@@ -33,14 +33,14 @@ int main(int argc, char* argv[])
 
         copy(begin(_boxes[random]), end(_boxes[random]), begin(selected_box));
 
-        // Select a ball at random
+        // Selects a ball at random
         random = rand() % 2;
 
-        // If the selected ball is yellow then do wizardry
+        // If the selected ball is yellow then proceed
         if (selected_box[random] == 'y') {
             other_index = (random == 0) ? 1 : 0;
 
-            // Checks if the 2nd ball (other_index) is yellow
+            // Checks if the 2nd ball (at other_index) is yellow or not
             if (selected_box[other_index] == 'y') {
                 ++yy;
             } else {
