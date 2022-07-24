@@ -46,7 +46,5 @@ int main(int argc, char* argv[])
         }
     }
 
-    printf("%f", yy / (yy + yw));
-
     return 0;
 }
