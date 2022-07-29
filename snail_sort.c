@@ -34,19 +34,19 @@ int* snail(size_t* outsz, int** mx, size_t rows, size_t cols)
 		while (vertical > rows) *output++ = mx[vertical--][horizontal];
 
 		/*
-		When it's here, it means it finished a loop;
-		So what it does is it jumps the loop
-		further inside, which means closing
-		the outer part of the matrix and
-		starting at the upper-left part of the
-		remaining matrix
-		###
-		Vertical and Horizontal starts at (0, 0) then
-		jumps to (1, 1) etc
-		Rows starting at 0 and cols at SIZE
-		Since the idea is closing more and more 
-		Towards the inner side, add rows and subs cols
-		When both are equal, means it's finished
+		 *When it's here, it means it finished a loop;
+		 *So what it does is it jumps the loop
+		 *further inside, which means closing
+		 *the outer part of the matrix and
+		 *starting at the upper-left part of the
+		 *remaining matrix
+		 **********************************************
+		 *Vertical and Horizontal starts at (0, 0) then
+		 *jumps to (1, 1) etc
+		 *Rows starting at 0 and cols at SIZE
+		 *Since the idea is closing more and more 
+		 *Towards the inner side, add rows and subs cols
+		 *When both are equal, means it's finished
 		*/
 		vertical++, horizontal++, rows++, cols--;
 	}
