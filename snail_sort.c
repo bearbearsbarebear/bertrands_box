@@ -76,12 +76,5 @@ int main(int argc, char* argv[])
 	// Resultant snail sorted array
 	int* array = snail(&size, test_array, SIZE, SIZE);
 
-	// Cleaning everything before exiting
-	free(array);
-	for (int i = 0; i < SIZE; ++i) {
-		free(test_array[i]);
-	}
-	free(test_array);
-
 	return 0;
 }
