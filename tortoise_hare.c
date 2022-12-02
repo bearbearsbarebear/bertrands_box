@@ -1,27 +1,29 @@
 #include <stdio.h>
 #include <stdint.h>
 
-/* 
-* https://en.wikipedia.org/wiki/Cycle_detection
-* Floyd's cycle-finding algorithm is a pointer algorithm
-* that uses only two pointers, which move through the sequence
-* at different speeds.
-*
-* This always assumes the given array has a length of n+1
-* and n numbers, following the pigeonhole principle.
-*/
-int findDuplicateInArr(const int16_t arr[])
+// Returns the index of the starting point of the cycle, or -1 if no cycle was found.
+int findDuplicateInArr(const int16_t arr[], uint16_t len)
 {
-	int16_t tortoise = 0;
-	int16_t hare = 0;
+	uint16_t tortoise = 0;
+	uint16_t hare = 0;
 
+	// Move the tortoise and hare pointers through the array until they meet
+	// at the starting point of the cycle
 	for (;;) {
 		tortoise = arr[tortoise];
 		hare = arr[arr[hare]];
 
+		// Check if the tortoise and hare pointers have reached the end of the array
+		if (tortoise >= len || hare >= len) {
+			// The array does not contain a cycle
+			return -1;
+		}
+
 		if (tortoise == hare) break;
 	}
 
+	// Move the tortoise pointer back to the beginning and move both pointers
+  	// until they meet again at the starting point of the cycle
 	tortoise = 0;
 	while (tortoise != hare) {
 		tortoise = arr[tortoise];
@@ -33,9 +35,7 @@ int findDuplicateInArr(const int16_t arr[])
 
 int main(int argc, char* argv[])
 {
-	const int16_t arr[] = {7, 1, 4, 2, 5, 8, 3, 9, 6, 8};
-
-	printf("%d", findDuplicateInArr(arr));
+	printf("%d", findDuplicateInArr((int16_t[]) {7, 1, 4, 2, 5, 10, 11, 12, 3, 9, 6, 8, 12}, 13));
 
 	return 0;
 }
