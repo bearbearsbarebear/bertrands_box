@@ -48,6 +48,53 @@ int* snail(size_t* outsz, int** mx, size_t rows, size_t cols)
 	return output - *outsz;
 }
 
+// Adaptation for leetcode's version of this problem
+int* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int* returnSize)
+{
+    size_t rows = matrixSize;
+    size_t cols = *matrixColSize;
+
+    // Declare variables for the current row and column in the snail traversal.
+    size_t vertical, horizontal;
+
+    // Allocate memory for the output array, which will have the same number
+    // of elements as the input array.
+    int* output = (int*) malloc((*returnSize = rows*cols) * sizeof(int));
+    if (output == NULL) {
+        printf("Error allocating memory for output array\n");
+        return NULL;
+    }
+
+    // Declare variables for the current row and column in the snail traversal.
+    int row = 0, col = 0;
+    // Traverse the matrix in a spiral pattern
+    int idx = 0;
+    // Start the transversal
+    while (row < rows && col < cols) {
+        // Traverse the top row from left to right
+        for (int i = col; i < cols; i++) output[idx++] = matrix[row][i];
+        row++;
+
+        // Traverse the right column from top to bottom
+        for (int i = row; i < rows; i++) output[idx++] = matrix[i][cols - 1];
+        cols--;
+
+        // Traverse the bottom row from right to left
+        if (row < rows) {
+            for (int i = cols - 1; i >= col; i--) output[idx++] = matrix[rows - 1][i];
+            rows--;
+        }
+
+        // Traverse the left column from bottom to top
+        if (col < cols) {
+            for (int i = rows - 1; i >= row; i--) output[idx++] = matrix[i][col];
+            col++;
+        }
+    }
+
+    return output;
+}
+
 int main(int argc, char* argv[])
 {
 	size_t size;
